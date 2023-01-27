@@ -4,22 +4,19 @@ syntax on
 call plug#begin('~/.vim/plugged')
  
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'morhetz/gruvbox'
 Plug 'miyase256/vim-ripgrep', {'branch': 'fix/remove-complete-from-RgRoot'}
 Plug 'dense-analysis/ale'
-Plug 'machakann/vim-highlightedyank'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'preservim/nerdtree'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'ghifarit53/tokyonight-vim'
+Plug 'machakann/vim-highlightedyank'
 Plug 'Chiel92/vim-autoformat'
-Plug 'github/copilot.vim'
- 
+Plug 'ghifarit53/tokyonight-vim'
+Plug 'pantharshit00/vim-prisma'
+" 9000+ Snippets
 call plug#end()
- 
  
 " No error bells if you exceed the line
 set noerrorbells
@@ -52,15 +49,15 @@ set showmatch
  
 " No swap files
 set noswapfile
- 
 set smartcase
- 
 set expandtab
 
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType html       setlocal shiftwidth=2 tabstop=2
 autocmd FileType python     setlocal shiftwidth=4 softtabstop=4 expandtab
 
+" use <c-space>for trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
  
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -70,8 +67,8 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 nnoremap <C-p> :Files<Cr>
  
-let g:python3_host_prog = '/usr/local/bin/python3.9'
- 
+let g:python3_host_prog = '/Users/timsteele/.pyenv/shims/python3'
+
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
 let b:ale_linters = ['eslint']
@@ -79,7 +76,6 @@ let b:ale_fixers = {'javascript': ['eslint']}
 let g:coc_global_extensions = [
             \'coc-json',
             \'coc-tsserver',
-            \'coc-import-cost',
             \'coc-eslint',
             \'coc-prettier',
             \'coc-snippets',
@@ -88,13 +84,18 @@ let g:coc_global_extensions = [
             \'coc-css',
             \'coc-pyright',
             \'coc-git' ]
+
  
 " Should allow :Prettier to format things
 " command! -nargs=0 Prettier :CocCommand prettier.formatFile
  
- 
 " NERDTree Settings
 nmap <C-f> :NERDTreeToggle<CR>
  
-" Color Scheme - gruvbox seems to be popular and i am indifferent
+" Color Scheme 
+set termguicolors
+
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+
 colorscheme tokyonight 
