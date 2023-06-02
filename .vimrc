@@ -11,6 +11,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'sbdchd/neoformat'
 Plug 'machakann/vim-highlightedyank'
 Plug 'Chiel92/vim-autoformat'
 Plug 'ghifarit53/tokyonight-vim'
@@ -55,6 +56,7 @@ set expandtab
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType html       setlocal shiftwidth=2 tabstop=2
 autocmd FileType python     setlocal shiftwidth=4 softtabstop=4 expandtab
+autocmd BufWritePre *.js Neoformat
 
 " use <c-space>for trigger completion
 inoremap <silent><expr> <c-space> coc#refresh()

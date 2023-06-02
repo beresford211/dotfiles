@@ -8,7 +8,10 @@ eval "$(pyenv init -)"
 export PATH="$HOME/.pyenv/bin:$PATH"
 alias python="python3"
 alias vim="nvim"
-
+export AIRFLOW_HOME=~/airflow
+export AIRFLOW_VERSION=2.5.1
+export PYTHON_VERSION="$(python --version | cut -d " " -f 2 | cut -d "." -f 1-2)"
+export CONSTRAINT_URL="https://raw.githubusercontent.com/apache/airflow/constraints-${AIRFLOW_VERSION}/constraints-${PYTHON_VERSION}.txt"
 alias y2d="youtube-dl -f 'bestaudio[ext=m4a]/mp4"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -106,7 +109,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 autoload -U +X bashcompinit && bashcompinit
